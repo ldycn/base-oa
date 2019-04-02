@@ -1,20 +1,20 @@
 /*
 *  组件
 * */
-import { withStyles, WithStyles } from '@material-ui/core/styles';
+import { WithStyles } from '@material-ui/core/styles';
 import React, { SFC } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-interface Props {
-  classes: {
-    card: string,
-  },
+interface Props extends WithStyles {
+  style: object,
+  children: any,
 }
-const GrayCard: SFC<Props> = (props) => (
+
+const GrayCard = (props: Props) => (
   <Card className={props.classes.card}>
     <CardContent>
-      qwfqwfqwfqwf
+      {props.children}
     </CardContent>
   </Card>
 );
