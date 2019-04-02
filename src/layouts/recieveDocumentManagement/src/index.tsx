@@ -5,6 +5,7 @@ import MaterialButton from '@material-ui/core/Button';
 import { WithStyles } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { connect } from 'react-redux';
 
 interface Props extends WithStyles {};
 
@@ -85,6 +86,7 @@ const Footer = (props: FooterProps) => {
 
 const RecieveDocumentManagement = (props: Props) => {
   function advancedSearchOnclick() {
+    props.doTest('asfafawwafa');
     console.log('click筛选查询');
   }
   function barCodeSearchOnclick() {
@@ -114,4 +116,17 @@ const RecieveDocumentManagement = (props: Props) => {
   )
 }
 
-export default RecieveDocumentManagement;
+function mapStateToProps(state: any) {
+  return {
+    test: state.test
+  }
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return {
+    doTest: (data: any) => dispatch(test(data)),
+  }
+}
+
+const WrappedRecieveDocumentManagement = connect(mapStateToProps as any, mapDispatchToProps as any)(RecieveDocumentManagement);
+export default WrappedRecieveDocumentManagement;
