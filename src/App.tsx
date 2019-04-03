@@ -3,7 +3,6 @@ import { createBrowserHistory } from "history";
 import { Router, Switch, Redirect, Route  } from "react-router-dom";
 import ReRoute from "./componentsUnit/reRoute"
 import { p404 } from './routers/pages/main'
-import RecieveDocumentManagement from './layouts/recieveDocumentManagement/';
 
 const hist = createBrowserHistory();
 

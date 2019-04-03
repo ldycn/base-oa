@@ -10,7 +10,7 @@ export const p404 = Loadable({
 })
 
 export const Test = Loadable({
-  loader: () => import('../../layouts/recieveDocumentManagement'),
+  loader: () => import('../../components/com-search-card'),
   loading: MyLoadingComponent
 })
 

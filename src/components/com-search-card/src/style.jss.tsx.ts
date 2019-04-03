@@ -12,6 +12,9 @@ const styles = (theme: Theme) => ({
   buttonLeft: {
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
+  },
+  iconButton: {
+    marginLeft: '10px',
   }
 });
 
