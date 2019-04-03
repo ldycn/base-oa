@@ -1,11 +1,11 @@
 import actions from './actions';
 
-function wrappedTest(data: any) {
+function test(data: string) {
   return (dispatch: any) => {
     dispatch(actions.test(data));
   };
 }
 
 export {
-  wrappedTest,
+  test,
 }

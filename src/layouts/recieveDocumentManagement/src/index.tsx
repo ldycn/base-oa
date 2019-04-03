@@ -6,15 +6,19 @@ import { WithStyles } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { connect } from 'react-redux';
+import { test } from '../../../Redux/actions/testActions';
 
-interface Props extends WithStyles {};
+interface Props extends WithStyles {
+  doTest: any,
+  test: string,
+};
 
 interface HeaderProps extends WithStyles {
   advancedSearchOnclick: any,
   barCodeSearchOnclick: any,
 };
 
-interface HeaderProps extends WithStyles {
+interface FormProps extends WithStyles {
   show: boolean,
   formValue: {
     title: string,
@@ -52,10 +56,11 @@ const Header = (props: HeaderProps) => {
 
 const AdvancedSearchCard = () => {
   return (
-    <Card className={props.classes.advancedSearchCard}>
-      <CardContent>
-      </CardContent>
-    </Card>
+    <></>
+    // <Card className={props.classes.advancedSearchCard}>
+    //   <CardContent>
+    //   </CardContent>
+    // </Card>
   );
 }
 
@@ -124,9 +129,9 @@ function mapStateToProps(state: any) {
 
 function mapDispatchToProps(dispatch: any) {
   return {
-    doTest: (data: any) => dispatch(test(data)),
+    doTest: (data: string) => dispatch(test(data)),
   }
 }
 
-const WrappedRecieveDocumentManagement = connect(mapStateToProps as any, mapDispatchToProps as any)(RecieveDocumentManagement);
+const WrappedRecieveDocumentManagement = connect(mapStateToProps, mapDispatchToProps)(RecieveDocumentManagement);
 export default WrappedRecieveDocumentManagement;

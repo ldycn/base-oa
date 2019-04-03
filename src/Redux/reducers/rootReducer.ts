@@ -1,12 +1,9 @@
-// import { combineReducers } from 'redux';
+import actions from "../actions/actions";
+import { combineReducers } from 'redux';
+import testReducer from './testRducer';
 
-type action = {
-  type: String,
-  payload: any,
-}
-
-const rootReducer = function(state = { a: 1 }, { type, payload }: action) {
-  return { a: state.a + 1 };
-};
+const rootReducer = combineReducers({
+  test: testReducer,
+});
 
 export default rootReducer;

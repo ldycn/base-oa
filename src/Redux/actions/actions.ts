@@ -5,5 +5,5 @@ const actions = createActions(
   'changeEnglish',
   'changeChinese',
 );
-console.log(actions)
+
 export default actions;
