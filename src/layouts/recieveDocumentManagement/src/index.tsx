@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { connect } from 'react-redux';
 import { test } from '../../../Redux/actions/testActions';
+import { Button as AntButton } from 'antd';
 
 interface Props extends WithStyles {
   doTest: any,
@@ -106,6 +107,7 @@ const RecieveDocumentManagement = (props: Props) => {
   return (
     <Card className={props.classes.searchCard}>
       <CardContent>
+        <AntButton type='primary'>asfa</AntButton>
         <Header
           classes={props.classes}
           advancedSearchOnclick={advancedSearchOnclick}

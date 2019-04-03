@@ -9,10 +9,19 @@ export const p404 = Loadable({
   loading: MyLoadingComponent
 })
 
+export const Test = Loadable({
+  loader: () => import('../../layouts/recieveDocumentManagement'),
+  loading: MyLoadingComponent
+})
+
 export default [
   {
     path: "/desktop",
     name: "home1",
     component: Home
+  }, {
+    path: "/test",
+    name: "test",
+    component: Test
   }
 ]
