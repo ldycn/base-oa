@@ -17,6 +17,7 @@ interface Props extends WithStyles {
   doTest: any,
   test: string,
   formInfo: any,
+  onSearch: any,
 };
 
 interface HeaderProps extends WithStyles {
@@ -68,8 +69,8 @@ const Header = (props: HeaderProps) => {
   );
 }
 
-const makeFormItem = (props: any) => {
-  const { formInfo, onChange, formValue } = props;
+function makeFormItem(info: any) {
+  const { formInfo, onChange, formValue } = info;
   const {key ,title, type, options } = formInfo;
   let component = <></>;
   switch (type) {
@@ -91,8 +92,8 @@ const makeFormItem = (props: any) => {
             style={{ width: '100%' }}
             onChange={(e) => onChange(e, key)}
           >
-              {options.map((name: any) => <Option key={name} value={name}>{name}</Option>)}
-            </Select>
+            {options.map((name: any) => <Option key={name} value={name}>{name}</Option>)}
+          </Select>
         </FormItem>
       );
       break;
@@ -117,7 +118,7 @@ const AdvancedSearchCard = (props: AdvancedSearchCardProps) => {
   return (
     <Card className={props.classes.advancedSearchCard}>
       <CardContent>
-        <Grid container alignItems="baseline" direction='row' justify="flex-start" spacing={10}>
+        <Grid container alignItems="baseline" direction='row' justify="flex-start" spacing={3}>
           {props.formInfo.map((v: any) => makeFormItem({
             onChange: props.onChange,
             formInfo: v,
@@ -153,11 +154,11 @@ const Footer = (props: FooterProps) => {
     </Grid>
   )
 }
+
 function setOpenInitialValue(formValue: any) {
   const result: any = {};
   formValue.forEach((v: any) => result[v.key] = v.defaultValue);
   return result;
-
 }
 
 function getResetFormValue(formInfo: any) {
@@ -179,6 +180,7 @@ function getResetFormValue(formInfo: any) {
   return result;
 }
 const SearchCard = (props: Props) => {
+  console.log(props.classes);
   const { formInfo = DRAFT_FORM_INFO } = props; 
   const [formValue, setFormValue] = useState(setOpenInitialValue(formInfo));
   const [showAdvancedCard, setShowAdvancedCard] = useState(false);
@@ -199,6 +201,7 @@ const SearchCard = (props: Props) => {
       }
     })
     console.log('click查询', fomatFormValue);
+    props.onSearch(fomatFormValue);
   }
   function resetOnclick() {
     setFormValue(getResetFormValue(formInfo));
@@ -283,8 +286,8 @@ const documentIdInfo = {
   defaultValue: '',
 };
 
-const securityLevelInfo = {
-  key: 'securityLevel',
+const secretLevelInfo = {
+  key: 'secretLevel',
   title: '密级',
   type: 'Select',
   options: ['一般', '机密', '绝密'],
@@ -343,7 +346,7 @@ const DISPATCH_FORM_INFO = [
   titleInfo,
   typeInfo,
   documentIdInfo,
-  securityLevelInfo,
+  secretLevelInfo,
   recieveOrganizationInfo,
   handleStatusInfo,
   doneDateInfo,
@@ -355,7 +358,7 @@ const AUDIT_DISPATCH_FORM_INFO = [
   titleInfo,
   typeInfo,
   documentIdInfo,
-  securityLevelInfo,
+  secretLevelInfo,
   recieveOrganizationInfo,
   handleStatusInfo,
   doneDateInfo,
@@ -367,7 +370,7 @@ const DRAFT_FORM_INFO = [
   titleInfo,
   typeInfo,
   documentIdInfo,
-  securityLevelInfo,
+  secretLevelInfo,
   handleStatusInfo,
   doneDateInfo,
 ];

@@ -10,7 +10,7 @@ export const p404 = Loadable({
 })
 
 export const Test = Loadable({
-  loader: () => import('../../components/com-search-card'),
+  loader: () => import('../../components/com-print-out-from'),
   loading: MyLoadingComponent
 })
 

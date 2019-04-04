@@ -31,7 +31,7 @@ class reRoute extends React.Component<Props> {
               return <FrontendAuth key={index} path={(match ? match.url: "") + child.path} component={child.component} name={child.name} />
             }) : ""
         }
-        {match ? <Redirect from={match.path} to={match.path} />: ""}
+        {/* {match ? <Redirect from={match.path} to={match.path} />: ""} */}
         {this.props.children}
       </Switch>
     );
